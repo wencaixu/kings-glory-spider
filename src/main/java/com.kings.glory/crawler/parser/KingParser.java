@@ -1,5 +1,6 @@
 package com.kings.glory.crawler.parser;
 
+import com.kings.glory.crawler.WebAppConfig;
 import com.kings.glory.vo.Hero;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -25,9 +26,6 @@ public class KingParser implements Parser {
     private static KingParser kingParser = new KingParser();
     private StoryParser storyParser = StoryParser.getInstance();
 
-    private static final String baseUri = "https://pvp.qq.com/web201605/";
-    private static final String kingClassName = "herolist clearfix";
-
     private String page;
     private List<Hero> heros = new ArrayList<>();
 
@@ -45,7 +43,7 @@ public class KingParser implements Parser {
         if(document == null || StringUtils.isEmpty(document.body().html())){
             return;
         }
-        Elements heroBox = document.getElementsByClass(kingClassName);
+        Elements heroBox = document.getElementsByClass(WebAppConfig.kingClassName);
         Elements heroLists = heroBox.get(0).getElementsByTag(li.name());
         long start;
         System.out.println("开始时间==="+(start=System.currentTimeMillis()));
@@ -54,13 +52,11 @@ public class KingParser implements Parser {
             Hero hero = new Hero();
             count.getAndIncrement();
             Future<Object> submit = executors.submit(() -> {
-                Elements a1 = element.getElementsByTag(a.name());
-                String uri = baseUri + a1.attr(href.name());
-                String story = parserStory(uri);
-                Element element1 = a1.get(0).getElementsByTag(img.name()).get(0);
-                hero.setDetail(story);
-                hero.setPicture("http:" + element1.attr(src.name()));
-                hero.setHero(element1.attr(alt.name()));
+                Elements aTag = element.getElementsByTag(a.name());
+                String uri = WebAppConfig.baseUri + aTag.attr(href.name());
+                hero.setDetail(parserStory(uri));
+                hero.setHero(aTag.get(0).getElementsByTag(img.name()).get(0).attr(alt.name()));
+                hero.setPicture("http:" + aTag.get(0).getElementsByTag(img.name()).get(0).attr(src.name()));
                 return hero;
             });
             heros.add((Hero) submit.get());
