@@ -12,6 +12,7 @@
 - Okhttp (应用层)
 - Jsoup (数据解析)
 - JSP+CSS（界面有点丑，哈哈）
+- 服务器：CentOS+Tomcat
 ##### 看一下实际效果(哈哈，真丑)
 
 ![image-20200907210755536](https://github.com/wencaixu/Kings-Glory-Story-Club/blob/master/src/main/test/image-20200907210755536.png)
@@ -162,5 +163,6 @@ public class StoryParser implements Parser{
 
 ### Github欢迎提issue
 [Github地址](https://github.com/wencaixu/Kings-Glory-Story-Club)
-### 关注我
-![](https://imgkr2.cn-bj.ufileos.com/ff383301-db27-473b-97ff-caa746faa000.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=A1zoPSKqyoiRjFYl%252Fq2%252FoGZu0K4%253D&Expires=1598847241)
+### 关注我公众号
+![](https://github.com/wencaixu/Kings-Glory-Story-Club/blob/master/src/main/test/profile.png)
+
