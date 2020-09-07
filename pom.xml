@@ -18,6 +18,7 @@
     <okhttp.version>4.8.1</okhttp.version>
     <jsoup.version>1.13.1</jsoup.version>
     <common.lang>3.9</common.lang>
+    <servlet-api.version>4.0.1</servlet-api.version>
     <collection.utils.version>3.2.2</collection.utils.version>
   </properties>
 
@@ -53,6 +54,11 @@
       <version>${common.lang}</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
